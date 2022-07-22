@@ -15,28 +15,34 @@
         </div>
     </header>
     <div class="search-section">
-            <img src="~/Images/icon-search.svg" alt="" />
+        <img src="~/Images/icon-search.svg" alt="" />
         <EditForm Model="GithubUser">
             <input type="text" placeholder="Search Github username" @bind-value="_search" />
+            <p>@_noResult</p>
             <button @onclick="() => SearchUser(_search)" type="submit">Search</button>
         </EditForm>
     </div>
-    <div class="info-section">
-        <p>@GithubUser.name</p>
-        <p>@GithubUser.created_at</p>
-        <img src="@GithubUser.avatar_url" alt="" />
-    </div>
+    <GithubUserInfoComponent githubUser="GithubUser" noResult="@_noResult" />
 </main>
-
 @code
 {
     private GithubUser GithubUser { get; set; } = new();
     private string _search = "";
+    private string _noResult = "";
 
-    protected override async Task OnInitializedAsync() => GithubUser = await GithubUserApi.GetGithubUser("KoenCobra");
+    protected override async Task OnInitializedAsync() => GithubUser = await GithubUserApi.GetGithubUser("wimobiwan");
 
     private async Task SearchUser(string search)
     {
         GithubUser = await GithubUserApi.GetGithubUser(search);
+
+        if (GithubUser.name is null)
+        {
+            _noResult = "No Result";
+        }
+        else
+        {
+            _noResult = "";
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace GitHubUserSearchApp.Sdk
         {
             var response = await _httpClient.GetAsync($"https://api.github.com/users/{name}");
 
-            response.EnsureSuccessStatusCode();
+            //response.EnsureSuccessStatusCode();
 
             await using var content = await response.Content.ReadAsStreamAsync();
 
