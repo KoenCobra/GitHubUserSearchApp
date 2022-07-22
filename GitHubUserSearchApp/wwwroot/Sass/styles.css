@@ -1,4 +1,9 @@
-﻿/* Box sizing rules */
+﻿@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+/*light mode colors*/
+/*darkmode*/
+/* Box sizing rules */
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 *,
 *::before,
 *::after {
@@ -35,7 +40,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-family: "Manrope", sans-serif;
+  font-family: "Space Mono", monospace;
 }
 
 /* A elements that don't have a class get default styles */
@@ -73,3 +78,14 @@ select {
     scroll-behavior: auto !important;
   }
 }
+/*light mode colors*/
+/*darkmode*/
+body {
+  background-color: #141D2F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*light mode colors*/
+/*darkmode*/

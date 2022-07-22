@@ -1,4 +1,9 @@
 ﻿@import "_Config.scss";
 
-
+body{
+    background-color: $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
