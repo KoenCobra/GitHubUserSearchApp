@@ -2,9 +2,7 @@
 
 <div class="info-section">
     <div class="header">
-        <div class="img-user">
-            <img src="@GithubUser.avatar_url" alt="No picture found" />
-        </div>
+        <img src="@GithubUser.avatar_url" alt="No picture found" />
         <div class="bio-section">
             <div class="info-header">
                 <div class="name">
@@ -24,6 +22,16 @@
                 }
             </div>
         </div>
+    </div>
+    <div class="info-bio-mobile">
+        @if (GithubUser.bio is not null)
+        {
+            <p>@GithubUser.bio</p>
+        }
+        else
+        {
+            <p>This profile has no bio</p>
+        }
     </div>
     <div class="user-info">
         <div class="info-repo">
