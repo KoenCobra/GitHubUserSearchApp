@@ -121,23 +121,27 @@
 </main>
 @code
 {
-    private GithubUser GithubUser { get; set; } = new();
-    private string _search = "";
-    private string _noResult = "";
+    private GithubUser? GithubUser { get; set; } = new();
+    private string? _search;
+    private string? _noResult;
 
-    protected override async Task OnInitializedAsync() => GithubUser = await GithubUserApi.GetGithubUser("wimobiwan");
+    protected override async Task OnInitializedAsync()
+    {
+        await SearchUser("wimobiwan");
+    }
 
     private async Task SearchUser(string search)
     {
-        GithubUser = await GithubUserApi.GetGithubUser(search);
+        var result = await GithubUserApi.GetGithubUser(search);
 
-        if (GithubUser.name is null)
+        if (!result.Succes)
         {
-            _noResult = "No Result";
+            _noResult = result.Message;
+            StateHasChanged();
         }
-        else
-        {
-            _noResult = "";
-        }
+        GithubUser = result.Data;
+        _noResult = "";
+
+        StateHasChanged();
     }
 }

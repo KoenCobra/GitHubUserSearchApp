@@ -4,6 +4,6 @@ namespace GitHubUserSearchApp.Sdk.Abstractions
 {
     public interface IGithubUserApi
     {
-        Task<GithubUser> GetGithubUser(string name);
+        Task<ServiceResponse<GithubUser>> GetGithubUser(string name);
     }
 }

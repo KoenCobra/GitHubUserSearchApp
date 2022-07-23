@@ -13,22 +13,27 @@ namespace GitHubUserSearchApp.Sdk
             _httpClient = httpClient;
         }
 
-        public async Task<GithubUser> GetGithubUser(string name)
+        public async Task<ServiceResponse<GithubUser>> GetGithubUser(string name)
         {
-            var response = await _httpClient.GetAsync($"https://api.github.com/users/{name}");
+            var userResponse = new ServiceResponse<GithubUser>();
 
-            //response.EnsureSuccessStatusCode();
+            var response = await _httpClient.GetAsync($"https://api.github.com/users/{name}");
 
             await using var content = await response.Content.ReadAsStreamAsync();
 
             var user = await JsonSerializer.DeserializeAsync<GithubUser>(content);
 
-            if (user is null)
+            if (user != null && user.id == 0)
             {
-                return user = new GithubUser();
+                userResponse.Succes = false;
+                userResponse.Message = "No result";
+            }
+            else
+            {
+                userResponse.Data = user;
             }
 
-            return user;    
+            return userResponse;
         }
     }
 }
