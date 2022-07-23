@@ -2,27 +2,122 @@
 @inject IGithubUserApi GithubUserApi
 
 <main>
-    <header>
-        <div class="heading">
-            <div class="title">
-                <h5>devfinder</h5>
+    <div class="container">
+        <header>
+            <div class="heading">
+                <div class="title">
+                    <h5>devfinder</h5>
+                </div>
+                <div class="toggle-container">
+                    <input type="checkbox" id="toggle" name="theme" />
+                    <p>light</p>
+                    <img src="Images/icon-sun.svg" />
+                </div>
             </div>
-            <div class="toggle-container">
-                <input type="checkbox" id="toggle" name="theme" />
-                <p>light</p>
-                <img src="~/Images/icon-sun.svg" alt="" />
+        </header>
+        <div class="search-section">
+            <img src="/Images/icon-search.svg" alt="" />
+            <EditForm Model="GithubUser">
+                <div class="form-input">
+                    <input type="text" placeholder="Search Github username..." @bind-value="_search" />
+                    <p class="no-result">@_noResult</p>
+                    <button @onclick="() => SearchUser(_search)" type="submit">Search</button>
+                </div>
+            </EditForm>
+        </div>
+        <div class="info-section">
+            <div class="header">
+                <div class="img-user">
+                    <img src="@GithubUser.avatar_url" alt="No picture found" />
+                </div>
+                <div class="bio-section">
+                    <div class="info-header">
+                        <div class="name">
+                            <p class="user-name">@GithubUser.name</p>
+                            <a href="@GithubUser.html_url">@($"@")@GithubUser.login</a>
+                        </div>
+                        <p>Joined @GithubUser.created_at.ToString("dd MMMM yyyy")</p>
+                    </div>
+                    <div class="info-bio">
+                        @if (GithubUser.bio is not null)
+                        {
+                            <p>@GithubUser.bio</p>
+                        }
+                        else
+                        {
+                            <p>This profile has no bio</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="info-repo">
+                    <div>
+                        <p class="title">Repos</p>
+                        <p class="info">@GithubUser.public_repos</p>
+                    </div>
+                    <div>
+                        <p class="title">Followers</p>
+                        <p class="info">@GithubUser.followers</p>
+                    </div>
+                    <div>
+                        <p class="title">Following</p>
+                        <p class="info">@GithubUser.following</p>
+                    </div>
+                </div>
+                <div class="info-footer">
+                    <div>
+                        <img class="location-img" src="Images/icon-location.svg" />
+                        @if (GithubUser.location is not null)
+                        {
+                            <span> @GithubUser.location</span>
+                        }
+                        else
+                        {
+                            <span class="not-available">Not Available</span>
+                        }
+                    </div>
+                    <div>
+                        <img class="twitter-img" src="Images/icon-twitter.svg" />
+                        @if (GithubUser.twitter_username is not null)
+                        {
+                            <a href=@($"https://twitter.com/{@GithubUser.twitter_username}")>
+                                <span> @GithubUser.twitter_username</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="not-available">Not Available</span>
+                        }
+                    </div>
+                    <div>
+                        <img class="blog-img" src="Images/icon-website.svg" />
+                        @if (GithubUser.blog is not null)
+                        {
+                            <a href="@GithubUser.blog">
+                                <span> @GithubUser.blog</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="not-available">Not Available</span>
+                        }
+                    </div>
+                    <div>
+                        <img class="company-img" src="Images/icon-company.svg" />
+                        @if (GithubUser.company is not null)
+                        {
+                            <span> @GithubUser.company</span>
+                        }
+                        else
+                        {
+                            <span class="not-available">Not Available</span>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
-    <div class="search-section">
-        <img src="~/Images/icon-search.svg" alt="" />
-        <EditForm Model="GithubUser">
-            <input type="text" placeholder="Search Github username" @bind-value="_search" />
-            <p>@_noResult</p>
-            <button @onclick="() => SearchUser(_search)" type="submit">Search</button>
-        </EditForm>
     </div>
-    <GithubUserInfoComponent githubUser="GithubUser" noResult="@_noResult" />
 </main>
 @code
 {
