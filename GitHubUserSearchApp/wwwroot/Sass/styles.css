@@ -540,6 +540,7 @@ body {
 }
 .info-section .user-info .info-footer img {
   margin-right: 12px;
+  filter: brightness(0) invert(1);
 }
 .info-section .user-info .info-footer a {
   text-decoration: none;
