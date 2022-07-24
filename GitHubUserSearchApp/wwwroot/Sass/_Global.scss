@@ -313,6 +313,7 @@ body {
 
             @media (max-width: 769px) {
                 padding: 18px 15px;
+                gap: 0;
                 justify-content: space-around;
             }
 
@@ -364,6 +365,16 @@ body {
                 &:hover {
                     text-decoration: underline;
                 }
+
+                @media (max-width: 600px) {
+                    font-size: 12px;
+                }
+            }
+
+            @media (max-width: 600px) {
+                span {
+                    font-size: 12px;
+                }
             }
 
             .location-img {
@@ -394,7 +405,11 @@ body {
             .not-available {
                 font-weight: 400;
                 font-size: 15px;
-                color: $greyBlue
+                color: $greyBlue;
+
+                @media (max-width: 600px) {
+                    font-size: 12px;
+                }
             }
         }
     }

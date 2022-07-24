@@ -31,6 +31,7 @@ namespace GitHubUserSearchApp.Sdk
             else
             {
                 userResponse.Data = user;
+                userResponse.Message = "";
             }
 
             return userResponse;

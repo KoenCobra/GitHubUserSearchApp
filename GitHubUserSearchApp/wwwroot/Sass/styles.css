@@ -382,6 +382,7 @@ body {
 @media (max-width: 769px) {
   .info-section .user-info .info-repo {
     padding: 18px 15px;
+    gap: 0;
     justify-content: space-around;
   }
 }
@@ -432,6 +433,16 @@ body {
 .info-section .user-info .info-footer a:hover {
   text-decoration: underline;
 }
+@media (max-width: 600px) {
+  .info-section .user-info .info-footer a {
+    font-size: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .info-section .user-info .info-footer span {
+    font-size: 12px;
+  }
+}
 .info-section .user-info .info-footer .location-img {
   width: 16.75px;
   height: 20px;
@@ -456,6 +467,11 @@ body {
   font-weight: 400;
   font-size: 15px;
   color: #697C9A;
+}
+@media (max-width: 600px) {
+  .info-section .user-info .info-footer .not-available {
+    font-size: 12px;
+  }
 }
 
 /*light mode colors*/
