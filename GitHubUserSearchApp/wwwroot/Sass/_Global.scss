@@ -12,6 +12,7 @@
  * animation shake-horizontal
  * ----------------------------------------
  */
+
 @keyframes shake-horizontal {
     0%, 100% {
         transform: translateX(0);
@@ -35,7 +36,7 @@
 }
 
 body {
-    background-color: $black;
+    background-color: var(--bodyBackground);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,11 +62,11 @@ body {
     .title {
         font-weight: 700;
         font-size: 26px;
-        color: $white;
+        color: var(--title);
     }
 
     .toggle-container {
-        color: $white;
+        color: var(--primaryWhite);
         display: flex;
         align-items: center;
         text-transform: uppercase;
@@ -79,10 +80,11 @@ body {
 .search-section {
     display: flex;
     align-items: center;
-    background-color: $veryDarkBlue;
+    background-color: var(--searchBackground);
     border-radius: 15px;
     padding: 10px 10px 10px 32px;
     margin-bottom: 24px;
+    box-shadow: var(--boxShadow);
 
     @media (max-width: 600px) {
         padding: 10px 10px 10px 16px;
@@ -125,7 +127,7 @@ body {
                 width: 100%;
                 font-weight: 400;
                 font-size: 18px;
-                color: $white;
+                color: var(--primaryWhite);
 
                 @media (max-width: 600px) {
                     font-size: 15px;
@@ -136,11 +138,11 @@ body {
                 margin-left: auto;
                 border: 0;
                 outline: none;
-                background-color: $Blue;
+                background-color: var(--buttonBackground);
                 font-style: normal;
                 font-weight: 700;
                 font-size: 16px;
-                color: $white;
+                color: var(--buttonText);
                 border-radius: 10px;
                 padding: 12px 24px;
                 transition: all 0.2s linear;
@@ -161,7 +163,7 @@ body {
     ::placeholder {
         font-weight: 400;
         font-size: 18px;
-        color: $white;
+        color: var(--primaryWhite);
 
         @media (max-width: 600px) {
             font-size: 13px;
@@ -173,8 +175,9 @@ body {
     display: flex;
     flex-direction: column;
     padding: 48px;
-    background-color: $veryDarkBlue;
+    background-color: var(--infoSectionBackground);
     border-radius: 15px;
+    box-shadow: var(--boxShadow);
 
     @media (max-width: 769px) {
         grid-template-columns: 1fr;
@@ -197,10 +200,16 @@ body {
             border-radius: 50%;
             width: 117px;
             height: 117px;
+            transform: scale(1.2);
+
+            @media (max-width: 769px) {
+                transform: scale(1);
+            }
 
             @media (max-width: 600px) {
                 width: 70px;
                 height: 70px;
+                transform: scale(1.2);
             }
         }
 
@@ -221,7 +230,7 @@ body {
                     .user-name {
                         font-weight: 700;
                         font-size: 26px;
-                        color: $white;
+                        color: var(--name);
                         padding-bottom: 8px;
 
                         @media (max-width: 600px) {
@@ -233,7 +242,7 @@ body {
                     a {
                         font-weight: 400;
                         font-size: 16px;
-                        color: $Blue;
+                        color: var(--login);
                         text-decoration: none;
 
                         @media (max-width: 600px) {
@@ -246,7 +255,7 @@ body {
                     font-weight: 400;
                     font-size: 15px;
                     line-height: 22px;
-                    color: $white;
+                    color: var(--primaryWhite);
 
                     @media (max-width: 600px) {
                         font-size: 14px;
@@ -258,7 +267,7 @@ body {
                 p {
                     font-weight: 400;
                     font-size: 15px;
-                    color: $white;
+                    color: var(--primaryWhite);
                     mix-blend-mode: normal;
                     opacity: 0.75;
                     padding-top: 20px;
@@ -276,7 +285,7 @@ body {
         p {
             font-weight: 400;
             font-size: 15px;
-            color: $white;
+            color: var(--primaryWhite);
             mix-blend-mode: normal;
             opacity: 0.75;
             padding-top: 20px;
@@ -295,19 +304,19 @@ body {
     }
 
     .user-info {
-        padding-left: 145px;
+        padding-left: 150px;
 
         @media (max-width: 769px) {
             padding: 0;
         }
 
         .info-repo {
-            background: $black;
+            background: var(--reposBackground);
             border-radius: 10px;
             padding: 17px 0 17px 32px;
             display: flex;
             gap: 90px;
-            color: $white;
+            color: var(--repoNumbers);
             margin-top: 25px;
             margin-bottom: 37px;
 
@@ -317,9 +326,16 @@ body {
                 justify-content: space-around;
             }
 
+            @media (max-width: 769px) {
+                text-align: center;
+            }
+
+
             .title {
                 font-weight: 400;
                 font-size: 13px;
+                margin-bottom: 5px;
+                color: var(--repoTitle);
 
                 @media (max-width: 769px) {
                     font-size: 11px;
@@ -343,7 +359,7 @@ body {
             gap: 20px;
             font-weight: 400;
             font-size: 15px;
-            color: $white;
+            color: var(--primaryWhite);
             word-break: break-all;
 
             @media (max-width: 600px) {
@@ -359,7 +375,7 @@ body {
                 text-decoration: none;
                 font-weight: 400;
                 font-size: 15px;
-                color: $white;
+                color: var(--primaryWhite);
                 transition: all 0.2s linear;
 
                 &:hover {
@@ -405,7 +421,7 @@ body {
             .not-available {
                 font-weight: 400;
                 font-size: 15px;
-                color: $greyBlue;
+                color: var(--notAvailable);
 
                 @media (max-width: 600px) {
                     font-size: 12px;

@@ -2,7 +2,7 @@
 
 <div class="info-section">
     <div class="header">
-        <img src="@GithubUser.avatar_url" alt="No picture found" />
+        <img src="@GithubUser.avatar_url" alt="No picture found"/>
         <div class="bio-section">
             <div class="info-header">
                 <div class="name">
@@ -51,51 +51,41 @@
         <div class="info-footer">
             <div>
                 <img class="location-img" src="Images/icon-location.svg" />
-                @if (GithubUser.location is not null)
-                {
-                    <span> @GithubUser.location</span>
-                }
-                else
+                @if (GithubUser.location is null)
                 {
                     <span class="not-available">Not Available</span>
                 }
+                <span> @GithubUser.location</span>
             </div>
             <div>
                 <img class="twitter-img" src="Images/icon-twitter.svg" />
-                @if (GithubUser.twitter_username is not null)
-                {
-                    <a href=@($"https://twitter.com/{@GithubUser.twitter_username}")>
-                        <span> @GithubUser.twitter_username</span>
-                    </a>
-                }
-                else
+                @if (GithubUser.twitter_username is null)
                 {
                     <span class="not-available">Not Available</span>
                 }
+                <a href=@($"https://twitter.com/{@GithubUser.twitter_username}")>
+                    <span> @GithubUser.twitter_username</span>
+                </a>
+
             </div>
             <div>
                 <img class="blog-img" src="Images/icon-website.svg" />
-                @if (GithubUser.blog is not null)
-                {
-                    <a href="@GithubUser.blog">
-                        <span> @GithubUser.blog</span>
-                    </a>
-                }
-                else
+                @if (GithubUser.blog == "")
                 {
                     <span class="not-available">Not Available</span>
+
                 }
+                <a href="@GithubUser.blog">
+                    <span> @GithubUser.blog</span>
+                </a>
             </div>
             <div>
                 <img class="company-img" src="Images/icon-company.svg" />
-                @if (GithubUser.company is not null)
-                {
-                    <span> @GithubUser.company</span>
-                }
-                else
+                @if (GithubUser.company is null)
                 {
                     <span class="not-available">Not Available</span>
                 }
+                <span> @GithubUser.company</span>
             </div>
         </div>
     </div>
