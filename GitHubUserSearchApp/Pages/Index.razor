@@ -1,19 +1,18 @@
 ﻿@page "/"
 @inject IGithubUserApi GithubUserApi
 
-<main>
+<main id="main" class="menu @(IsDarkMode ? "dark-mode" : "")">
     <div class="container">
         <header>
             <div class="heading">
                 <div class="title">
                     <h5>devfinder</h5>
                 </div>
-                <div class="toggle-container">
-                    <input type="checkbox" />
+                <div id="dark-mode-toggle" class="toggle-container" @onclick="SwitchTheme">
                     <p class="light">light</p>
                     <p class="dark">dark</p>
-                    <img class="sun-img" src="Images/icon-sun.svg" />
                     <img class="moon-img" src="Images/icon-moon.svg" />
+                    <img class="sun-img" src="Images/icon-sun.svg" />
                 </div>
             </div>
         </header>
@@ -36,6 +35,7 @@
     private GithubUser? GithubUser { get; set; } = new();
     private string? _search;
     private string? _noResult;
+    private bool IsDarkMode { get; set; } = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -55,5 +55,10 @@
         GithubUser = result.Data;
         _noResult = result.Message;
         StateHasChanged();
+    }
+
+    private void SwitchTheme()
+    {
+        IsDarkMode = !IsDarkMode;
     }
 }

@@ -38,6 +38,7 @@ body {
     text-rendering: optimizeSpeed;
     line-height: 1.5;
     font-family: $Font;
+    background-color: var(--bodyBackground);
 }
 
 /* A elements that don't have a class get default styles */

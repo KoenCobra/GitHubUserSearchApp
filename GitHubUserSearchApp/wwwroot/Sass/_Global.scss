@@ -35,8 +35,9 @@
     }
 }
 
-body {
+main {
     background-color: var(--bodyBackground);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,6 +75,10 @@ body {
         font-size: 13px;
         letter-spacing: 2.5px;
         gap: 1rem;
+
+        &:hover{
+            cursor: pointer;
+        }
     }
 }
 
@@ -369,7 +374,7 @@ body {
 
             img {
                 margin-right: 12px;
-                filter: brightness(0) invert(1);
+                filter: var(--filter);
             }
 
             a {
