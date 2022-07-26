@@ -85,6 +85,10 @@ html:focus-within {
 /* Set core body defaults */
 body {
   min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-family: "Space Mono", monospace;
@@ -223,9 +227,10 @@ select {
     opacity: 1;
   }
 }
-s main {
+main {
   background-color: var(--bodyBackground);
   min-height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -234,6 +239,7 @@ s main {
 .container {
   width: 800px;
   animation: container 0.5s both;
+  margin: 0;
 }
 @media (max-width: 769px) {
   .container {
