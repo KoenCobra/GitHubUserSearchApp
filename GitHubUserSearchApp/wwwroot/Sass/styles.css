@@ -203,6 +203,26 @@ select {
     transform: translateX(-8px);
   }
 }
+@keyframes container {
+  0% {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes name {
+  0% {
+    transform: translateX(-2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 main {
   background-color: var(--bodyBackground);
   min-height: 100vh;
@@ -213,6 +233,7 @@ main {
 
 .container {
   width: 800px;
+  animation: container 0.5s both;
 }
 @media (max-width: 769px) {
   .container {
@@ -363,6 +384,7 @@ main {
 }
 .info-section .header {
   display: flex;
+  animation: name 0.5s both;
 }
 @media (max-width: 769px) {
   .info-section .header {
@@ -449,6 +471,9 @@ main {
     display: none;
   }
 }
+.info-section .info-bio-mobile {
+  animation: name 0.5s both;
+}
 .info-section .info-bio-mobile p {
   font-weight: 400;
   font-size: 15px;
@@ -471,6 +496,7 @@ main {
 }
 .info-section .user-info {
   padding-left: 150px;
+  animation: name 0.5s both;
 }
 @media (max-width: 769px) {
   .info-section .user-info {
