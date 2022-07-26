@@ -223,7 +223,7 @@ select {
     opacity: 1;
   }
 }
-main {
+s main {
   background-color: var(--bodyBackground);
   min-height: 100vh;
   display: flex;
